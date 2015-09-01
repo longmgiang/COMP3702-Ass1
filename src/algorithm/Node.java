@@ -15,7 +15,7 @@ public class Node extends Point2D {
 	}
 	
 	//Create node with x and y pos of a point
-	public Node(Point2D point) {
+	public Node(Point2D.Double point) {
 		this.xPos = point.getX();
 		this.yPos = point.getY();
 	}
@@ -30,6 +30,10 @@ public class Node extends Point2D {
 		return this.yPos;
 	}
 	
+	public Point2D.Double convert() {
+		return new Point2D.Double(this.xPos, this.yPos);
+	}
+	
 	//String print node pos
 	public String toString() {
 		return "Node: " + this.xPos + ", " + this.yPos;
@@ -40,6 +44,7 @@ public class Node extends Point2D {
 		this.xPos = x;
 		this.yPos = y;
 	}
+
 	
 	
 }
