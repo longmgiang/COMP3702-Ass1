@@ -21,8 +21,17 @@ public class init {
 					problem.getGoalState().getBase().getY());
 			ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>(problem.getObstacles());
 			
-			HashMap<Node, HashMap<Node, Double>> newMap = PRM.createMap(nodeStart, nodeEnd, obstacles, 1000);
+			long startTimeMap = System.nanoTime();
+			HashMap<Node, HashMap<Node, Double>> newMap = PRM.createMap(nodeStart, nodeEnd, obstacles, 5000);
+			long endTimeMap = System.nanoTime();
 			//System.out.println(newMap);
+			System.out.println("time: " + (endTimeMap-startTimeMap)/1000000000);
+//			System.out.println(newMap.get(nodeStart).keySet());
+			long startTimeSearch = System.nanoTime();
+			ArrayList<Node> travelPath = Astar.InformedSearch(nodeStart, nodeEnd, newMap);
+			long endTimeSearch = System.nanoTime();
+			System.out.println("time: " + (endTimeSearch-startTimeSearch)/1000000000);
+			System.out.println(travelPath);
 		} catch (IOException e) {
 			System.err.println("File cannot be found (IOException): "
 					+ e.getMessage());
