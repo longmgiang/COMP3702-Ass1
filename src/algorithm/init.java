@@ -13,7 +13,7 @@ public class init {
 		ProblemSpec problem = new ProblemSpec();
 		try {
 			
-			problem.loadProblem("testcases/4_joints.txt");
+			problem.loadProblem("testcases/4_joints - 3 obstacle.txt");
 			
 			Node nodeStart = new Node(problem.getInitialState().getBase().getX(), 
 					problem.getInitialState().getBase().getY());
@@ -22,7 +22,7 @@ public class init {
 			ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>(problem.getObstacles());
 			
 			long startTimeMap = System.nanoTime();
-			HashMap<Node, HashMap<Node, Double>> newMap = PRM.createMap(nodeStart, nodeEnd, obstacles, 5000);
+			HashMap<Node, HashMap<Node, Double>> newMap = PRM.createMap(nodeStart, nodeEnd, obstacles, 1000);
 			long endTimeMap = System.nanoTime();
 			//System.out.println(newMap);
 			System.out.println("time: " + (endTimeMap-startTimeMap)/1000000000);
